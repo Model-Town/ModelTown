@@ -4,6 +4,9 @@ __DIR__=$(cd $(dirname $0); pwd)
 ANDROID_PATH=${SCRIPTS_PATH:-$__DIR__/../model-town/build/android}
 DEPS_PATH=$ANDROID_PATH/deps
 
+echo Loading .bashrc...
+source $HOME/.bashrc
+
 echo Making android...
 cd $ANDROID_PATH
 make

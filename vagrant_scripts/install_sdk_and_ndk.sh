@@ -17,6 +17,5 @@ unzip -d $INSTALL_PATH /tmp/android-ndk-r15c-linux-x86_64.zip
 rm -rf /tmp/android-ndk-r15c-linux-x86_64.zip
 
 echo Write local.properties...
-touch $BUILD_PATH/local.properties
-echo 'sdk.dir='$INSTALL_PATH'/android-sdk-linux/' >> $BUILD_PATH/local.properties
-echo 'ndk.dir='$INSTALL_PATH'/android-ndk-r15c/' >> $BUILD_PATH/local.properties
+echo 'sdk.dir = '$INSTALL_PATH'/android-sdk-linux' > $BUILD_PATH/local.properties
+echo 'ndk.dir = '$INSTALL_PATH'/android-ndk-r15c' >> $BUILD_PATH/local.properties
