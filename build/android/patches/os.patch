@@ -1,0 +1,13 @@
+--- a/irrlicht/source/Irrlicht/os.cpp
++++ b/irrlicht/source/Irrlicht/os.cpp
+@@ -6,6 +6,7 @@
+ #include "irrString.h"
+ #include "IrrCompileConfig.h"
+ #include "irrMath.h"
++#include <time.h>
+ 
+ #if defined(_IRR_COMPILE_WITH_SDL_DEVICE_)
+ 	#include <SDL/SDL_endian.h>
+-- 
+2.18.0
+
