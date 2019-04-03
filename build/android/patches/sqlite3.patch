@@ -1,6 +1,6 @@
---- a/sqlite-amalgamation-3180000/sqlite3.c
-+++ b/sqlite-amalgamation-3180000/sqlite3.c
-@@ -198,9 +198,9 @@
+--- a/sqlite-amalgamation-3240000/sqlite3.c
++++ b/sqlite-amalgamation-3240000/sqlite3.c
+@@ -948,9 +948,9 @@ SQLITE_PRIVATE const char **sqlite3CompileOptions(int *pnOpt){
  */
  #ifndef SQLITE_DISABLE_LFS
  # define _LARGE_FILE       1
