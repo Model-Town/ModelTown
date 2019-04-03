@@ -700,16 +700,16 @@ apk: local.properties assets $(ICONV_LIB) $(IRRLICHT_LIB) $(CURL_LIB) $(LEVELDB_
 	export VERSION_STR="${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}" && \
 	export BUILD_TYPE_C=$$(echo "$${BUILD_TYPE}" | sed 's/./\U&/') &&          \
 	./gradlew assemble$$BUILD_TYPE_C &&                                           \
-	echo "APK stored at: build/outputs/apk/Minetest-$$BUILD_TYPE.apk" &&       \
+	echo "APK stored at: build/outputs/apk/$$BUILD_TYPE/ModelTown-$$BUILD_TYPE.apk" &&       \
 	echo "You can install it with \`make install_$$BUILD_TYPE\`"
 
 # These Intentionally doesn't depend on their respective build steps,
 # because it takes a while to verify that everything's up-to-date.
 install_debug:
-	${ANDROID_SDK}/platform-tools/adb install -r build/outputs/apk/Minetest-debug.apk
+	${ANDROID_SDK}/platform-tools/adb install -r build/outputs/apk/ModelTown-debug.apk
 
 install_release:
-	${ANDROID_SDK}/platform-tools/adb install -r build/outputs/apk/Minetest-release.apk
+	${ANDROID_SDK}/platform-tools/adb install -r build/outputs/apk/ModelTown-release.apk
 
 prep_srcdir :
 	@if [ ! -e ${ANDR_ROOT}/jni/src ]; then                                    \
