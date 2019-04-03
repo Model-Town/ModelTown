@@ -3023,8 +3023,8 @@ void Game::updateCameraOrientation(CameraOrientation *cam, float dtime)
 {
 #ifdef HAVE_TOUCHSCREENGUI
 	if (g_touchscreengui) {
-		cam->camera_yaw   += g_touchscreengui->getYawChange();
-		cam->camera_pitch  = g_touchscreengui->getPitch();
+		cam->camera_yaw   -= g_touchscreengui->getYawChange();
+		cam->camera_pitch  = -(g_touchscreengui->getPitch());
 	} else {
 #endif
 
@@ -4017,7 +4017,7 @@ void Game::handleDigging(const PointedThing &pointed, const v3s16 &nodepos,
 		bool is_valid_position;
 		MapNode wasnode = map.getNodeNoEx(nodepos, &is_valid_position);
 		if (is_valid_position) {
-			if (client->moddingEnabled() && 
+			if (client->moddingEnabled() &&
 			    		client->getScript()->on_dignode(nodepos, wasnode)) {
 				return;
 			}
