@@ -1621,7 +1621,7 @@ bool Game::startup(bool *kill,
 	runData.update_wielded_item_trigger = true;
 
 	memset(&flags, 0, sizeof(flags));
-	flags.show_chat = true;
+	flags.show_chat = false;
 	flags.show_hud = true;
 	flags.show_debug = g_settings->getBool("show_debug");
 	m_invert_mouse = g_settings->getBool("invert_mouse");
