@@ -306,7 +306,7 @@ $(OPENSSL_LIB): $(OPENSSL_TIMESTAMP)
 		--platform=${APP_PLATFORM}                                             \
 		--install-dir=$${TOOLCHAIN};                                           \
 	export PATH="$${TOOLCHAIN}/bin:$${PATH}";                                  \
-	CC=${CROSS_PREFIX}gcc ./Configure -DL_ENDIAN no-asm android-${TARGET_ARCH};\
+	CC=${CROSS_PREFIX}gcc ./Configure -DL_ENDIAN android-${TARGET_ARCH};\
 	CC=${CROSS_PREFIX}gcc ANDROID_DEV=/tmp/ndk-${TARGET_HOST} make depend;     \
 	CC=${CROSS_PREFIX}gcc ANDROID_DEV=/tmp/ndk-${TARGET_HOST} make build_libs; \
 	touch ${OPENSSL_TIMESTAMP};                                                \

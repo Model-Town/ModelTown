@@ -19,7 +19,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include "tile.h"
 
-#include <cstring>
 #include <ICameraSceneNode.h>
 #include "util/string.h"
 #include "util/container.h"
@@ -1141,7 +1140,7 @@ video::IImage * Align2Npot2(video::IImage * image,
 
 	// Only GLES2 is trusted to correctly report npot support
 	// Note: we cache the boolean result. GL context will never change on Android.
-	char *exts = (char *)glGetString(GL_EXTENSIONS);
+	const char *exts = (char *)glGetString(GL_EXTENSIONS);
 	static const bool hasNPotSupport = get_GL_major_version() > 1 &&
 		exts &&
 		strstr(exts, "GL_OES_texture_npot");
