@@ -11,6 +11,11 @@ tar xf /tmp/android-sdk_r24.4.1-linux.tgz -C $INSTALL_PATH
 android-sdk-linux/tools/android update sdk --no-ui -a --filter platform-tool,android-25,build-tools-25.0.3
 rm -rf /tmp/android-sdk_r24.4.1-linux.tgz
 
+if [ -z "$(grep 'ANDROID_SDK' $HOME/.bashrc)" ] ; then
+  echo 'export ANDROID_SDK=$HOME/android/android-sdk-linux' >> $HOME/.bashrc
+  echo 'export PATH=$PATH:$ANDROID_SDK/build-tools/25.0.3' >> $HOME/.bashrc
+fi
+
 echo Install NDK...
 wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip -P /tmp
 unzip -d $INSTALL_PATH /tmp/android-ndk-r15c-linux-x86_64.zip
