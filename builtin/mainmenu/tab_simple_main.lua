@@ -23,20 +23,21 @@ local function get_formspec(tabview, name, tabdata)
 	local fav_selected = menudata.favorites[tabdata.fav_selected]
 
 	local retval =
-		"label[9.5,0;".. fgettext("Name / Password") .. "]" ..
-		"field[0.25,3.35;5.5,0.5;te_address;;" ..
+		"label[9.5,0;".. fgettext("Name") .. "]" ..
+		"field[0.25,5.25;5.5,0.5;te_address;;" ..
 			core.formspec_escape(core.settings:get("address")) .."]" ..
-		"field[5.75,3.35;2.25,0.5;te_port;;" ..
+		"field[5.75,5.25;2.25,0.5;te_port;;" ..
 			core.formspec_escape(core.settings:get("remote_port")) .."]" ..
-		"button[10,2.6;2,1.5;btn_mp_connect;".. fgettext("Connect") .. "]" ..
+		"button[10,4.5;2,1.5;btn_mp_connect;".. fgettext("Connect") .. "]" ..
 		"field[9.8,1;2.6,0.5;te_name;;" ..
 			core.formspec_escape(core.settings:get("name")) .."]" ..
-		"pwdfield[9.8,2;2.6,0.5;te_pwd;]"
+		"label[9.5,1.375;".. fgettext("Password") .. "]" ..
+		"pwdfield[9.8,2.375;2.6,0.5;te_pwd;]"
 
 
 	if tabdata.fav_selected and fav_selected then
 		if gamedata.fav then
-			retval = retval .. "button[7.7,2.6;2.3,1.5;btn_delete_favorite;" ..
+			retval = retval .. "button[7.7,4.5;2.3,1.5;btn_delete_favorite;" ..
 				fgettext("Del. Favorite") .. "]"
 		end
 	end
@@ -53,7 +54,7 @@ local function get_formspec(tabview, name, tabdata)
 		image_column(fgettext("PvP enabled"), "pvp") .. ",padding=0.25;" ..
 		"color,span=1;" ..
 		"text,padding=1]" ..                  -- name
-		"table[-0.05,0;9.2,2.75;favourites;"
+		"table[-0.05,0;9.2,4.5;favourites;"
 
 	if #menudata.favorites > 0 then
 		local favs = core.get_favorites("local")
@@ -83,19 +84,19 @@ local function get_formspec(tabview, name, tabdata)
 		retval = retval .. ";0]"
 	end
 
-	-- separator
-	retval = retval .. "box[-0.28,3.75;12.4,0.1;#FFFFFF]"
+	-- -- separator
+	-- retval = retval .. "box[-0.28,3.75;12.4,0.1;#FFFFFF]"
 
-	-- checkboxes
-	retval = retval ..
-		"checkbox[8.0,3.9;cb_creative;".. fgettext("Creative Mode") .. ";" ..
-			dump(core.settings:get_bool("creative_mode")) .. "]"..
-		"checkbox[8.0,4.4;cb_damage;".. fgettext("Enable Damage") .. ";" ..
-			dump(core.settings:get_bool("enable_damage")) .. "]"
-	-- buttons
-	retval = retval ..
-		"button[0,3.7;8,1.5;btn_start_singleplayer;" .. fgettext("Start Singleplayer") .. "]" ..
-		"button[0,4.5;8,1.5;btn_config_sp_world;" .. fgettext("Config mods") .. "]"
+	-- -- checkboxes
+	-- retval = retval ..
+	-- 	"checkbox[8.0,3.9;cb_creative;".. fgettext("Creative Mode") .. ";" ..
+	-- 		dump(core.settings:get_bool("creative_mode")) .. "]"..
+	-- 	"checkbox[8.0,4.4;cb_damage;".. fgettext("Enable Damage") .. ";" ..
+	-- 		dump(core.settings:get_bool("enable_damage")) .. "]"
+	-- -- buttons
+	-- retval = retval ..
+	-- 	"button[0,3.7;8,1.5;btn_start_singleplayer;" .. fgettext("Start Singleplayer") .. "]" ..
+	-- 	"button[0,4.5;8,1.5;btn_config_sp_world;" .. fgettext("Config mods") .. "]"
 
 	return retval
 end
@@ -188,9 +189,9 @@ local function main_button_handler(tabview, fields, name, tabdata)
 
 		core.settings:set("address", fields.te_address)
 		core.settings:set("remote_port", fields.te_port)
-			
- 		core.start()		
- 		return true		
+
+ 		core.start()
+ 		return true
  	end
 
 	if fields.btn_config_sp_world then
